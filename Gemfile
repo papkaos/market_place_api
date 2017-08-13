@@ -40,6 +40,13 @@ end
 
 gem 'devise'
 
+# Sabisu gems
+gem 'sabisu_rails', '0.0.2.beta', github: "IcaliaLabs/sabisu-rails"
+gem 'compass-rails', '1.1.7'
+gem 'furatto', '1.2.7'
+gem 'font-awesome-rails', '4.1.0.0'
+gem 'simple_form', '3.0.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
