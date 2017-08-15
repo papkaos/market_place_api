@@ -4,8 +4,6 @@ describe Api::V1::UsersController do
   # before(:each) { request.headers['Accept'] = "application/vnd.marketplace.v1" }
 
   describe "GET #show" do
-    # include helpers for Devise to recognize authenticate method
-    include Devise::TestHelpers
 
     before(:each) do
       @user = FactoryGirl.create :user
@@ -21,7 +19,6 @@ describe Api::V1::UsersController do
   end
 
   describe "POST #create" do
-    include Devise::TestHelpers
 
     context "when is successfully created" do
       before(:each) do
@@ -60,7 +57,6 @@ describe Api::V1::UsersController do
   end
 
   describe "PUT/PATCH #update" do
-    include Devise::TestHelpers
 
     context "when is successfully updated" do
       before(:each) do
