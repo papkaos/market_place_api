@@ -4,8 +4,6 @@ describe Api::V1::UsersController do
   # before(:each) { request.headers['Accept'] = "application/vnd.marketplace.v1" }
 
   describe "GET #show" do
-    # include helpers for Devise to recognize authenticate method
-    include Devise::TestHelpers
 
     before(:each) do
       @user = FactoryGirl.create :user
@@ -21,7 +19,6 @@ describe Api::V1::UsersController do
   end
 
   describe "POST #create" do
-    include Devise::TestHelpers
 
     context "when is successfully created" do
       before(:each) do
@@ -60,11 +57,14 @@ describe Api::V1::UsersController do
   end
 
   describe "PUT/PATCH #update" do
-    include Devise::TestHelpers
+    before(:each) do
+      @user = FactoryGirl.create :user
+      api_authorization_header @user.auth_token
+    end
 
     context "when is successfully updated" do
       before(:each) do
-        @user = FactoryGirl.create :user
+        # @user = FactoryGirl.create :user
         patch :update, { id: @user.id,
                          user: { email: "newmail@example.com" } }, format: :json
       end
@@ -79,7 +79,7 @@ describe Api::V1::UsersController do
 
     context "when is not created" do
       before(:each) do
-        @user = FactoryGirl.create :user
+        # @user = FactoryGirl.create :user
         patch :update, { id: @user.id,
                          user: { email: "bademail.com" } }, format: :json
       end
@@ -101,6 +101,7 @@ describe Api::V1::UsersController do
   describe "DELETE #destroy" do
     before(:each) do
       @user = FactoryGirl.create :user
+      api_authorization_header @user.auth_token
       delete :destroy, { id: @user.id }, format: :json
     end
 
