@@ -57,10 +57,14 @@ describe Api::V1::UsersController do
   end
 
   describe "PUT/PATCH #update" do
+    before(:each) do
+      @user = FactoryGirl.create :user
+      api_authorization_header @user.auth_token
+    end
 
     context "when is successfully updated" do
       before(:each) do
-        @user = FactoryGirl.create :user
+        # @user = FactoryGirl.create :user
         patch :update, { id: @user.id,
                          user: { email: "newmail@example.com" } }, format: :json
       end
@@ -75,7 +79,7 @@ describe Api::V1::UsersController do
 
     context "when is not created" do
       before(:each) do
-        @user = FactoryGirl.create :user
+        # @user = FactoryGirl.create :user
         patch :update, { id: @user.id,
                          user: { email: "bademail.com" } }, format: :json
       end
@@ -97,6 +101,7 @@ describe Api::V1::UsersController do
   describe "DELETE #destroy" do
     before(:each) do
       @user = FactoryGirl.create :user
+      api_authorization_header @user.auth_token
       delete :destroy, { id: @user.id }, format: :json
     end
 
