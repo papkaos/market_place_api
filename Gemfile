@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.5'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -31,10 +31,17 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :test do
-  gem 'rspec-rails', '~> 2.14'
+group :development do
+  gem 'sqlite3'
+end
+
+group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 2.14'
   gem 'shoulda-matchers', '2.6.1'
 end
 

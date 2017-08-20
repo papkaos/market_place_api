@@ -5,7 +5,11 @@ MarketPlaceApi::Application.routes.draw do
   namespace :api, defaults: { format: :json } do
     scope module: :v1 do
 
-      resources :users, :only => [:show, :create, :update, :destroy]
+      resources :users, :only => [:show, :create, :update, :destroy] do
+
+        resources :products, :only => [:create, :update, :destroy]
+
+      end
 
       resources :sessions, :only => [:create, :destroy]
 
