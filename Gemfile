@@ -56,6 +56,9 @@ gem 'furatto', '1.2.7'
 gem 'font-awesome-rails', '4.1.0.0'
 gem 'simple_form', '3.0.2'
 
+gem 'kaminari', '0.16.1'
+gem 'delayed_job_active_record', '4.0.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
